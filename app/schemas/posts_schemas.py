@@ -1,5 +1,6 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, Field, field_serializer
 from datetime import datetime
+
 
 
 class PostCreate(BaseModel):
@@ -17,4 +18,8 @@ class PostResponse(BaseModel):
 
     class Config:
         from_attributes = True
+        
+    @field_serializer("created_at")
+    def format_created_at(self, value: datetime):
+        return value.strftime("%Y-%m-%d, %I:%M %p")
     

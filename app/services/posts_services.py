@@ -14,5 +14,5 @@ def create_post(db: Session, post: posts_schemas.PostCreate):
     return db_post
 
 
-def get_posts(db: Session, limit: int, offset: int):
-    return paginate_model(posts_models.Post, db, limit, offset)
+def get_posts(db: Session, limit: int, offset: int, dir:str):
+    return paginate_model(posts_models.Post, db, limit, offset, dir)

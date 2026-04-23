@@ -17,6 +17,7 @@ def create(post: PostCreate, db: Session = Depends(get_db)):
 def list_posts(
     db: Session = Depends(get_db),
     limit: int = Query(10, ge=1, le=100),
-    offset: int = Query(0, ge=0)
+    offset: int = Query(0, ge=0),
+    dir: str = Query("desc", pattern="^(asc|desc)$"),
 ):
-    return posts_services.get_posts(db, limit, offset)
+    return posts_services.get_posts(db, limit, offset, dir)

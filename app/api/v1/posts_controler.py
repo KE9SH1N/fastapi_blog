@@ -21,3 +21,15 @@ def list_posts(
     dir: str = Query("desc", pattern="^(asc|desc)$"),
 ):
     return posts_services.get_posts(db, limit, offset, dir)
+
+
+@posts_router.get("/get_all", response_model=list[PostResponse])
+def read_all(db: Session = Depends(get_db)):
+    return posts_services.get_all_posts(db)
+
+@posts_router.get("/{post_id}", response_model=PostResponse)
+def read_one(post_id: int, db: Session = Depends(get_db)):
+    post = posts_services.get_post_by_id(db, post_id)
+    if not post:
+        raise HTTPException(status_code=404, detail="Post not found")
+    return post

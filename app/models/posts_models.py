@@ -1,4 +1,5 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy.sql import func
 
 from ..database import Base
 
@@ -10,6 +11,6 @@ class Post(Base):
     title = Column(String, index=True)
     content = Column(Text)
     user_id = Column(Integer, ForeignKey("users.id"))
-    created_at = Column(DateTime)
+    created_at = Column(DateTime, server_default=func.now())
 
 

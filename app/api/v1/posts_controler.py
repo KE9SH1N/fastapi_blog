@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.schemas.posts_schemas import PostCreate, PostResponse 
-from ...database import get_db
+from app.db.dependencies import get_db
 from app.services import posts_services
 from app.schemas.pagination_schemas import PaginatedResponse
 

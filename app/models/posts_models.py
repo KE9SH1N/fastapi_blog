@@ -1,7 +1,7 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer, String, Text
 from sqlalchemy.sql import func
 
-from ..database import Base
+from app.db import Base
 
 
 class Post(Base):

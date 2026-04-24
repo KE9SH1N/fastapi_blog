@@ -1,5 +1,3 @@
-# app/db/session.py
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from app.db.config import DATABASE_URL

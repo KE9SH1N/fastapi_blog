@@ -17,4 +17,4 @@ class Roles(Base):
     # user = relationship("User", back_populates="roles")
     # permission = relationship("Permissions", secondary="role_permission", back_populates="roles")
 
-print("ROLES MODEL LOADED")
+
